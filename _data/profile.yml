@@ -44,6 +44,14 @@ education:
   logo: /assets/images/badges/ui.png
   position: Bachelor of Medical Science
   date: Aug. 2015 - Jul. 2019
+- name: Universitas Indonesia
+  logo: /assets/images/badges/ui.png
+  position: Non-Degree Training Program in Knowledge Graph
+  date: Oct. 2021 - Nov. 2021
+- name: Institut Teknologi Sepuluh Nopember
+  logo: /assets/images/badges/its.png
+  position: Non-Degree Training Program in Artificial Intelligence
+  date: Oct. 2018 - Dec. 2018
 
 experience:
  - name: Center of Artificial Intelligence, ITB
@@ -58,13 +66,13 @@ experience:
 awards:
 - name: Platinum award IndoHCF Award 2023
   date: 2023
-- name: 1st place winner at the 6th Open Innovation 2022, IMERI
+- name: 1<sup>st</sup> place winner at the 6th Open Innovation 2022, IMERI
   date: 2022
-- name: 3rd place at DSE Day Pitching Competition, International Conference on Data and Software Engineering 2021 (ICoDSE 2021), Institut Teknologi Bandung
+- name: 3<sup>rd</sup> place at DSE Day Pitching Competition, International Conference on Data and Software Engineering 2021 (ICoDSE 2021), Institut Teknologi Bandung
   date: 2021
 - name: Top 25 Non-degree artificial intelligence training program, Digital Talent Scholarship 2018, Department of Electrical Engineering, Sepuluh Nopember Institute of Technology (ITS), Ministry of Communication and Informatics, Republic of Indonesia
   date: 2018
 - name: Universitas Indonesia’s delegation for Pekan Ilmiah Mahasiswa Nasional 30 (PIMNAS 30), Universitas Muslim Indonesia (UMI), Makassar
   date: 2017
-- name: Grand finalists at the 1st Open Innovation 2017, IMERI
+- name: Grand finalists at the 1<sup>st</sup> Open Innovation 2017, IMERI
   date: 2017
