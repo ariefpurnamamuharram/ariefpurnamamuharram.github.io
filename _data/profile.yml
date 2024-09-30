@@ -44,6 +44,8 @@ education:
   logo: /assets/images/badges/ui.png
   position: Bachelor of Medical Science
   date: Aug. 2015 - Jul. 2019
+
+training:
 - name: Universitas Indonesia
   logo: /assets/images/badges/ui.png
   position: Non-Degree Training Program in Knowledge Graph
@@ -66,7 +68,7 @@ experience:
 awards:
 - name: Platinum award IndoHCF Award 2023
   date: 2023
-- name: 1<sup>st</sup> place winner at the 6th Open Innovation 2022, IMERI
+- name: 1<sup>st</sup> place winner at the 6<sup>th</sup> Open Innovation 2022, IMERI
   date: 2022
 - name: 3<sup>rd</sup> place at DSE Day Pitching Competition, International Conference on Data and Software Engineering 2021 (ICoDSE 2021), Institut Teknologi Bandung
   date: 2021
