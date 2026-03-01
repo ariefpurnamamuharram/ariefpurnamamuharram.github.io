@@ -30,3 +30,27 @@ body_attr: >-
     </div>
 
 </div>
+
+<script>
+(function() {
+  function smoothScrollToTarget(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('#navbar-year a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var hash = this.getAttribute('href');
+      if (hash && hash !== '#') {
+        e.preventDefault();
+        smoothScrollToTarget(hash.slice(1));
+        history.replaceState(null, null, hash);
+      }
+    });
+  });
+  if (window.location.hash) {
+    window.addEventListener('load', function() {
+      smoothScrollToTarget(window.location.hash.slice(1));
+    });
+  }
+})();
+</script>
