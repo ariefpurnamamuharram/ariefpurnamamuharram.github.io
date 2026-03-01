@@ -22,16 +22,24 @@
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
                 {% for link in item.links %}
-                {% if link[1].url %}
-                <a class="mr-1" target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
+                {% assign link_key_lower = link[0] | downcase %}
+                {% if link_key_lower == 'cite' %}
+                  {% assign btn_mod = 'pub-link-btn--cite' %}
+                {% elsif link_key_lower == 'code' %}
+                  {% assign btn_mod = 'pub-link-btn--code' %}
                 {% else %}
-                <a class="mr-1" target="_blank" href="{{ link[1] }}">[{{ link[0] }}]</a>
+                  {% assign btn_mod = 'pub-link-btn--default' %}
+                {% endif %}
+                {% if link[1].url %}
+                <a class="pub-link-btn {{ btn_mod }} mr-1" target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">{{ link[0] }}</a>
+                {% else %}
+                <a class="pub-link-btn {{ btn_mod }} mr-1" target="_blank" href="{{ link[1] }}">{{ link[0] }}</a>
                 {% endif %}
                 {% endfor %}
                 {%- if item.bibtex or item.ris -%}
-                <button type="button" class="btn btn-sm btn-link p-0 mr-0 export-citation-modal-btn text-muted" title="Cite"
+                <button type="button" class="pub-link-btn pub-link-btn--cite mr-1 export-citation-modal-btn" title="Cite"
                     {%- if item.bibtex %} data-export-citation-bibtex-target="export-citation-bibtex-{{ abstract_id }}"{% endif %}
-                    {%- if item.ris %} data-export-citation-ris-target="export-citation-ris-{{ abstract_id }}"{% endif %}>[Cite]</button>
+                    {%- if item.ris %} data-export-citation-ris-target="export-citation-ris-{{ abstract_id }}"{% endif %}>Cite</button>
                 {%- if item.bibtex -%}<span id="export-citation-bibtex-{{ abstract_id }}" class="d-none">{{ item.bibtex }}</span>{%- endif -%}
                 {%- if item.ris -%}<span id="export-citation-ris-{{ abstract_id }}" class="d-none">{{ item.ris }}</span>{%- endif -%}
                 {%- endif -%}
@@ -63,16 +71,24 @@
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
                 {% for link in item.links %}
-                {% if link[1].url %}
-                <a class="mr-1" target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
+                {% assign link_key_lower_m = link[0] | downcase %}
+                {% if link_key_lower_m == 'cite' %}
+                  {% assign btn_mod_m = 'pub-link-btn--cite' %}
+                {% elsif link_key_lower_m == 'code' %}
+                  {% assign btn_mod_m = 'pub-link-btn--code' %}
                 {% else %}
-                <a class="mr-1" target="_blank" href="{{ link[1] }}">[{{ link[0] }}]</a>
+                  {% assign btn_mod_m = 'pub-link-btn--default' %}
+                {% endif %}
+                {% if link[1].url %}
+                <a class="pub-link-btn {{ btn_mod_m }} mr-1" target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">{{ link[0] }}</a>
+                {% else %}
+                <a class="pub-link-btn {{ btn_mod_m }} mr-1" target="_blank" href="{{ link[1] }}">{{ link[0] }}</a>
                 {% endif %}
                 {% endfor %}
                 {%- if item.bibtex or item.ris -%}
-                <button type="button" class="btn btn-sm btn-link p-0 mr-0 export-citation-modal-btn text-muted" title="Cite"
+                <button type="button" class="pub-link-btn pub-link-btn--cite mr-1 export-citation-modal-btn" title="Cite"
                     {%- if item.bibtex %} data-export-citation-bibtex-target="export-citation-bibtex-{{ abstract_id_m }}-mobile"{% endif %}
-                    {%- if item.ris %} data-export-citation-ris-target="export-citation-ris-{{ abstract_id_m }}-mobile"{% endif %}>[Cite]</button>
+                    {%- if item.ris %} data-export-citation-ris-target="export-citation-ris-{{ abstract_id_m }}-mobile"{% endif %}>Cite</button>
                 {%- if item.bibtex -%}<span id="export-citation-bibtex-{{ abstract_id_m }}-mobile" class="d-none">{{ item.bibtex }}</span>{%- endif -%}
                 {%- if item.ris -%}<span id="export-citation-ris-{{ abstract_id_m }}-mobile" class="d-none">{{ item.ris }}</span>{%- endif -%}
                 {%- endif -%}
