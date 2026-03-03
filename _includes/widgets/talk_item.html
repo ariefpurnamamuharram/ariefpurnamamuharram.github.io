@@ -1,0 +1,89 @@
+{% assign item = include.item %}
+{% assign item_id = item.id | default: item.title | slugify %}
+{% assign desc_stripped = item.description | default: "" | strip %}
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3">
+            {%- if item.cover -%}
+            <img data-src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="lazy w-100 rounded-sm" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
+            {%- else -%}
+            <svg class="bubble-visual-hash lazy w-100 rounded-sm" data-bubble-visual-hash="{{ item_id }}" viewBox="0 0 300 200"></svg>
+            {%- endif -%}
+        </div>
+        <div class="col-md-9 col-xl-10 p-3 pl-md-0">
+            <h5 class="mt-0 mb-1 font-weight-normal">{{ item.title }}</h5>
+            <p class="mt-0 mb-0 small">{% if item.venue %}{{ item.venue }}{% if item.date %} · {{ item.date | date: "%B %Y" }}{% endif %}{% elsif item.date %}{{ item.date | date: "%B %Y" }}{% endif %}</p>
+            {%- if desc_stripped != "" -%}
+            <div class="border rounded mb-2 mt-2 abstract-box">
+                <div class="px-2 py-1 small font-weight-medium border-bottom bg-light rounded-top d-flex align-items-center">
+                    <a class="text-muted text-decoration-none abstract-toggle collapsed w-100 d-flex justify-content-between align-items-center" data-toggle="collapse" href="#talk-desc-{{ item_id }}" role="button" aria-expanded="false" aria-controls="talk-desc-{{ item_id }}"><span>Description</span> <small class="collapse-icon">▼</small></a>
+                </div>
+                <div class="collapse small text-muted px-2 py-2" id="talk-desc-{{ item_id }}">{{ item.description }}</div>
+            </div>
+            {%- endif -%}
+            <p class="small pb-0 mb-0 mt-2 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
+                {% for link in item.links %}
+                {% assign link_key_lower = link[0] | downcase %}
+                {% if link_key_lower == 'slides' or link_key_lower == 'pdf' %}
+                  {% assign btn_mod = 'pub-link-btn--code' %}
+                  {% assign btn_icon = 'fas fa-file-pdf' %}
+                {% elsif link_key_lower == 'video' %}
+                  {% assign btn_mod = 'pub-link-btn--default' %}
+                  {% assign btn_icon = 'fas fa-video' %}
+                {% else %}
+                  {% assign btn_mod = 'pub-link-btn--default' %}
+                  {% assign btn_icon = 'fas fa-external-link-alt' %}
+                {% endif %}
+                {% if link[1].url %}
+                <a class="pub-link-btn {{ btn_mod }} mr-1" target="{{ link[1]['target'] | default: '_blank' }}" href="{{ link[1]['url'] }}"><i class="{{ btn_icon }} mr-1"></i>{{ link[0] }}</a>
+                {% else %}
+                <a class="pub-link-btn {{ btn_mod }} mr-1" target="_blank" href="{{ link[1] }}"><i class="{{ btn_icon }} mr-1"></i>{{ link[0] }}</a>
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="card w-100 d-md-none border-top-0 border-right-0 border-left-0 rounded-0" style="overflow-y: scroll;">
+    {%- if item.cover -%}
+    <img data-src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="lazy card-img w-100" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
+    {%- else -%}
+    <svg class="bubble-visual-hash lazy w-100 rounded-sm" data-bubble-visual-hash="{{ item_id }}" viewBox="0 0 300 200"></svg>
+    {%- endif -%}
+    <div class="card-img-overlay d-flex align-items-start flex-column" style="background-color: rgba(255, 255, 255, 0.85);">
+        <div class="mb-auto"></div>
+        <div>
+            <h5 class="mt-0 mb-1 font-weight-normal">{{ item.title }}</h5>
+            <p class="mt-0 mb-0 small">{% if item.venue %}{{ item.venue }}{% if item.date %} · {{ item.date | date: "%B %Y" }}{% endif %}{% elsif item.date %}{{ item.date | date: "%B %Y" }}{% endif %}</p>
+            {%- if desc_stripped != "" -%}
+            <div class="border rounded mb-2 mt-2 abstract-box">
+                <div class="px-2 py-1 small font-weight-medium border-bottom bg-light rounded-top d-flex align-items-center">
+                    <a class="text-muted text-decoration-none abstract-toggle collapsed w-100 d-flex justify-content-between align-items-center" data-toggle="collapse" href="#talk-desc-{{ item_id }}-mobile" role="button" aria-expanded="false" aria-controls="talk-desc-{{ item_id }}-mobile"><span>Description</span> <small class="collapse-icon">▼</small></a>
+                </div>
+                <div class="collapse small text-muted px-2 py-2 d-sm-block" id="talk-desc-{{ item_id }}-mobile">{{ item.description }}</div>
+            </div>
+            {%- endif -%}
+            <p class="small pb-0 mb-0 mt-2 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
+                {% for link in item.links %}
+                {% assign link_key_lower_m = link[0] | downcase %}
+                {% if link_key_lower_m == 'slides' or link_key_lower_m == 'pdf' %}
+                  {% assign btn_mod_m = 'pub-link-btn--code' %}
+                  {% assign btn_icon_m = 'fas fa-file-pdf' %}
+                {% elsif link_key_lower_m == 'video' %}
+                  {% assign btn_mod_m = 'pub-link-btn--default' %}
+                  {% assign btn_icon_m = 'fas fa-video' %}
+                {% else %}
+                  {% assign btn_mod_m = 'pub-link-btn--default' %}
+                  {% assign btn_icon_m = 'fas fa-external-link-alt' %}
+                {% endif %}
+                {% if link[1].url %}
+                <a class="pub-link-btn {{ btn_mod_m }} mr-1" target="{{ link[1]['target'] | default: '_blank' }}" href="{{ link[1]['url'] }}"><i class="{{ btn_icon_m }} mr-1"></i>{{ link[0] }}</a>
+                {% else %}
+                <a class="pub-link-btn {{ btn_mod_m }} mr-1" target="_blank" href="{{ link[1] }}"><i class="{{ btn_icon_m }} mr-1"></i>{{ link[0] }}</a>
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>

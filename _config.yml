@@ -39,4 +39,5 @@ plugins:
 
 collections:
   - publications
+  - talks
 #  - news

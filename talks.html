@@ -1,0 +1,63 @@
+---
+layout: default
+title: Talk Materials
+navbar_title: Talk Materials
+description: "Slides and materials from talks."
+body_attr: >-
+  data-spy="scroll" data-target="#navbar-year" data-offset="100"
+---
+
+{% assign materials_by_year = site.talks | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+
+<div class="row">
+    <div class="col-12 col-lg-10">
+        {% if site.talks.size == 0 %}
+        <p class="text-muted">No talk materials added yet. Add entries in <code>_talks/</code> and put slide files in <code>assets/files/</code>.</p>
+        {% else %}
+        {% for year in materials_by_year %}
+        <h2 class="pt-4" id="year-{{ year.name }}">{{ year.name }}</h2>
+        <div class="my-0 p-0 bg-white shadow-sm rounded-sm">
+            {% for item in year.items %}
+                {% include widgets/talk_item.html item=item %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    {% if site.talks.size > 0 %}
+    <div class="col-2 d-none d-lg-block">
+        <div id="navbar-year" class="nav nav-pills flex-column sticky-top" style="top: 80px">
+            {% for year in materials_by_year %}
+            <a class="nav-link d-block" href="#year-{{ year.name }}">{{ year.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% if site.talks.size > 0 %}
+<script>
+(function() {
+  function smoothScrollToTarget(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('#navbar-year a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var hash = this.getAttribute('href');
+      if (hash && hash !== '#') {
+        e.preventDefault();
+        smoothScrollToTarget(hash.slice(1));
+        history.replaceState(null, null, hash);
+      }
+    });
+  });
+  if (window.location.hash) {
+    window.addEventListener('load', function() {
+      smoothScrollToTarget(window.location.hash.slice(1));
+    });
+  }
+})();
+</script>
+{% endif %}
