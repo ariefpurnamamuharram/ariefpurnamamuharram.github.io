@@ -7,7 +7,13 @@ body_attr: >-
   data-spy="scroll" data-target="#navbar-year" data-offset="100"
 ---
 
-{% assign materials_by_year = site.talks | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+{% assign materials_by_year = site.talks
+  | sort: "date"
+  | reverse
+  | group_by_exp: "item", "item.date | date: '%Y'"
+  | sort: "name"
+  | reverse
+%}
 
 <div class="row">
     <div class="col-12 col-lg-10">
