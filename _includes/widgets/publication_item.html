@@ -65,14 +65,14 @@
             <p class="mt-0 mb-0 small">{% include widgets/author_list.html authors=item.authors %}</p>
             <p class="mt-0 mb-0 small">{{item.pub_pre}}<i>{{ item.pub }}</i>{{ item.pub_post }} {{ item.pub_date }} {{ item.pub_last }}</p>
             {%- assign abstract_id_m = item.id | default: item.title | slugify -%}
-            <div class="border rounded mb-2 mt-2 abstract-box">
+            <div class="border rounded mb-0 mt-2 abstract-box">
                 <div class="px-2 py-1 small font-weight-medium border-bottom bg-light rounded-top d-flex align-items-center">
                     <a class="text-muted text-decoration-none abstract-toggle collapsed w-100 d-flex justify-content-between align-items-center" data-toggle="collapse" href="#abstract-{{ abstract_id_m }}-mobile" role="button" aria-expanded="false" aria-controls="abstract-{{ abstract_id_m }}-mobile"><span>Abstract</span> <small class="collapse-icon">▼</small></a>
                 </div>
                 <div class="collapse small text-muted px-2 py-2 d-sm-block" id="abstract-{{ abstract_id_m }}-mobile">{{ item.abstract }}</div>
             </div>
             
-            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
+            <p class="small pb-0 mb-3 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
                 {% for link in item.links %}
                 {% assign link_key_lower_m = link[0] | downcase %}
                 {% if link_key_lower_m == 'cite' %}
@@ -86,13 +86,13 @@
                   {% assign btn_icon_m = 'fas fa-link' %}
                 {% endif %}
                 {% if link[1].url %}
-                <a class="pub-link-btn {{ btn_mod_m }} mr-1" target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}"><i class="{{ btn_icon_m }} mr-1"></i>{{ link[0] }}</a>
+                <a class="pub-link-btn {{ btn_mod_m }} mt-2 mr-1" target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}"><i class="{{ btn_icon_m }} mr-1"></i>{{ link[0] }}</a>
                 {% else %}
-                <a class="pub-link-btn {{ btn_mod_m }} mr-1" target="_blank" href="{{ link[1] }}"><i class="{{ btn_icon_m }} mr-1"></i>{{ link[0] }}</a>
+                <a class="pub-link-btn {{ btn_mod_m }} mt-2 mr-1" target="_blank" href="{{ link[1] }}"><i class="{{ btn_icon_m }} mr-1"></i>{{ link[0] }}</a>
                 {% endif %}
                 {% endfor %}
                 {%- if item.bibtex or item.ris -%}
-                <button type="button" class="pub-link-btn pub-link-btn--cite mr-1 export-citation-modal-btn" title="Cite"
+                <button type="button" class="pub-link-btn pub-link-btn--cite mt-2 mr-1 export-citation-modal-btn" title="Cite"
                     {%- if item.bibtex %} data-export-citation-bibtex-target="export-citation-bibtex-{{ abstract_id_m }}-mobile"{% endif %}
                     {%- if item.ris %} data-export-citation-ris-target="export-citation-ris-{{ abstract_id_m }}-mobile"{% endif %}><i class="fas fa-quote-right mr-1"></i>Cite</button>
                 {%- if item.bibtex -%}<span id="export-citation-bibtex-{{ abstract_id_m }}-mobile" class="d-none">{{ item.bibtex }}</span>{%- endif -%}
