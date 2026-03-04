@@ -21,7 +21,7 @@
                 <div class="collapse small text-muted px-2 py-2" id="talk-desc-{{ item_id }}">{{ item.description }}</div>
             </div>
             {%- endif -%}
-            <p class="small pb-0 mb-3 mt-2 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
+            <p class="small pb-0 mb-3 lh-125 text-muted abstract-links d-flex flex-wrap align-items-center">
                 {% for link in item.links %}
                 {% assign link_key_lower = link[0] | downcase %}
                 {% if link_key_lower == 'slides' or link_key_lower == 'pdf' %}
