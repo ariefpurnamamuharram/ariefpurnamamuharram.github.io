@@ -19,7 +19,7 @@
                 </li>
                 {% else %}
                 <li class="nav-item {% if item.name == page.navbar_title %}active{% endif %}">
-                    <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}{% if item.name == "Publications" %} ({{ site.publications.size }}){% endif %}{% if item.name == "Talk Materials" %} ({{ site.talks.size }}){% endif %}</a>
+                    <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}{% if item.name == "Publications" %} ({{ site.publications.size }}){% endif %}{% if item.name == "Talks" %} ({{ site.talks.size }}){% endif %}</a>
                 </li>
                 {% endif %}
                 {% endfor %}
