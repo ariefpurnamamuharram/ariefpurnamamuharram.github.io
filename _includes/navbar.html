@@ -8,9 +8,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 {% for item in site.data.navigation.pages %}
+                {% if item.children %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-{{ forloop.index }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ item.name }}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-{{ forloop.index }}">
+                        {% for child in item.children %}
+                        <a class="dropdown-item" href="{% if child.url contains 'http' %}{{ child.url }}{% else %}{{ child.url | relative_url }}{% endif %}"{% if child.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ child.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% else %}
                 <li class="nav-item {% if item.name == page.navbar_title %}active{% endif %}">
                     <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}{% if item.name == "Publications" %} ({{ site.publications.size }}){% endif %}{% if item.name == "Talk Materials" %} ({{ site.talks.size }}){% endif %}</a>
                 </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
