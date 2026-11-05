@@ -1,0 +1,29 @@
+<ul class="roles">
+    {% for item in include.items %}
+    <li>
+        {% if item.url %}
+        <a class="role-card" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+            {% if item.logo %}
+            <img src="{{ item.logo | relative_url }}" alt="" width="36" height="36" loading="lazy">
+            {% endif %}
+            <div>
+                <p class="role-name">{{ item.name }}</p>
+                {% if item.position %}<p class="role-position">{{ item.position }}</p>{% endif %}
+                {% if item.date %}<p class="when">{{ item.date }}</p>{% endif %}
+            </div>
+        </a>
+        {% else %}
+        <div class="role-card is-static">
+            {% if item.logo %}
+            <img src="{{ item.logo | relative_url }}" alt="" width="36" height="36" loading="lazy">
+            {% endif %}
+            <div>
+                <p class="role-name">{{ item.name }}</p>
+                {% if item.position %}<p class="role-position">{{ item.position }}</p>{% endif %}
+                {% if item.date %}<p class="when">{{ item.date }}</p>{% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

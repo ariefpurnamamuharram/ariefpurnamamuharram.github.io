@@ -1,0 +1,48 @@
+---
+layout: default
+title: Videos
+nav: videos
+seo_title: "Videos | Arief Purnama Muharram"
+description: "Videos by Arief Purnama Muharram."
+redirect_from:
+  - /videos.html
+---
+<header class="page-head">
+    <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> Videos</p>
+    <h1>Videos <span class="count">{{ site.videos.size }}</span></h1>
+    <p>Open videos archive.</p>
+</header>
+
+{% assign videos_by_year = site.videos
+  | sort: "date"
+  | reverse
+  | group_by_exp: "item", "item.date | date: '%Y'"
+  | sort: "name"
+  | reverse
+%}
+
+<section class="section">
+    <div class="wrap">
+        {% if site.videos.size == 0 %}
+        <div class="empty-state">
+            <p>No videos have been added yet.</p>
+        </div>
+        {% else %}
+        <nav class="year-nav" aria-label="Videos by year">
+            {% for year in videos_by_year %}
+            <a href="#year-{{ year.name }}">{{ year.name }}</a>
+            {% endfor %}
+        </nav>
+        {% for year in videos_by_year %}
+        <section class="year-block" id="year-{{ year.name }}">
+            <h2>{{ year.name }}</h2>
+            <div class="entry-list">
+                {% for item in year.items %}
+                {% include widgets/video_item.html item=item %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+        {% endif %}
+    </div>
+</section>

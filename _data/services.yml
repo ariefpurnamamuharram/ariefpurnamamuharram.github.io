@@ -1,0 +1,33 @@
+# Append an item to add a service. links is optional, and a link does not have to be Fiverr.
+intro: Advisory and technical work in digital health, medical writing, and data.
+items:
+  - name: Digital health transformation
+    summary: Consulting on digital health transformation.
+    icon: pulse
+    links:
+      - label: Fiverr
+        url: https://www.fiverr.com/ariefpurnamam/be-your-digital-health-transformation-consultant
+  - name: Medical content writing
+    summary: Professional writing for medical content.
+    icon: pen
+    links:
+      - label: Fiverr
+        url: https://www.fiverr.com/ariefpurnamam/be-your-professional-medical-content-writer
+  - name: Health data analysis
+    summary: Analysis of health data.
+    icon: chart
+    links:
+      - label: Fiverr
+        url: https://www.fiverr.com/ariefpurnamam/do-professional-health-data-analysis-for-you
+  - name: Data cleaning and preprocessing
+    summary: Cleaning and preprocessing of datasets.
+    icon: filter
+    links:
+      - label: Fiverr
+        url: https://www.fiverr.com/ariefpurnamam/do-data-cleaning-and-data-preprocessing-to-your-data
+  - name: Database design
+    summary: Design of a database for a project.
+    icon: database
+    links:
+      - label: Fiverr
+        url: https://www.fiverr.com/ariefpurnamam/do-database-design-for-you

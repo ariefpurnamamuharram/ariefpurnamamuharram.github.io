@@ -1,0 +1,51 @@
+---
+layout: default
+title: About
+nav: about
+seo_title: "About | Arief Purnama Muharram"
+description: "About Arief Purnama Muharram."
+---
+<header class="page-head">
+    <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> About</p>
+    <h1>About</h1>
+    <p>Education, experience, and honors.</p>
+</header>
+
+{% if site.data.display.homepage.show_experience %}
+<div class="band">
+<div class="wrap about">
+    <div class="pair">
+        {% if site.data.profile.experience %}
+        <section id="experience">
+            <h2 style="margin-bottom: 8px;">Experience</h2>
+            {% include widgets/role_list.html items=site.data.profile.experience %}
+        </section>
+        {% endif %}
+        {% if site.data.profile.education %}
+        <section id="education">
+            <h2 style="margin-bottom: 8px;">Education</h2>
+            {% include widgets/role_list.html items=site.data.profile.education %}
+            {% if site.data.profile.training %}
+            <h3>Training</h3>
+            {% include widgets/role_list.html items=site.data.profile.training %}
+            {% endif %}
+        </section>
+        {% endif %}
+    </div>
+
+    {% if site.data.profile.awards %}
+    <section class="sheet-block" id="honors">
+        <h2 style="margin-bottom: 8px;">Honors</h2>
+        <ul class="honor-list">
+            {% for item in site.data.profile.awards %}
+            <li>
+                <time>{{ item.date }}</time>
+                <p>{{ item.name | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+</div>
+</div>
+{% endif %}

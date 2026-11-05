@@ -1,29 +1,83 @@
 ---
 layout: default
-title: Homepage
-navbar_title: Home
-description: "PhD Student at WU Vienna. Medical doctor with expertise in AI, machine learning, bioinformatics, and health informatics."
+title: Home
+nav: home
+seo_title: "Home | Arief Purnama Muharram"
+description: "Arief Purnama Muharram is a PhD student at WU Vienna University of Economics and Business. His research interests are in artificial intelligence, machine learning, bioinformatics, and health informatics."
 ---
-{% include widgets/profile_card.html %}
+<section class="wrap hero-grid">
+    <div class="hero-copy">
+        <p class="eyebrow">PhD student</p>
+        <h1>{{ site.data.profile.primary_name }}</h1>
+        <p class="lede">Research in artificial intelligence, machine learning, bioinformatics, and health informatics.</p>
+        {% if site.data.profile.keywords %}
+        <ul class="tags" aria-label="Research keywords">
+            {% for keyword in site.data.profile.keywords %}
+            <li>{{ keyword }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% include profile_links.html %}
+    </div>
+    <aside class="id-card">
+        {% if site.data.profile.portrait_url %}
+        <div
+            class="portrait-wrap"
+            data-tooltip="{{ site.data.profile.portrait_caption | strip_html | strip | escape }}"
+        >
+            <img
+                src="{{ site.data.profile.portrait_url | relative_url }}"
+                alt="Portrait of Arief Purnama Muharram"
+                width="1200"
+                height="1200"
+                fetchpriority="high"
+            >
+        </div>
+        {% endif %}
+        <div class="id-card-body">
+            <h2>{{ site.data.profile.primary_name }}</h2>
+            <p class="id-role">{{ site.data.profile.role }}</p>
+            {% if site.data.profile.languages %}
+            <div class="languages" aria-label="Languages">
+                <span class="languages-label">Languages:</span>
+                <ul>
+                    {% for language in site.data.profile.languages %}
+                    <li title="{{ language.name }}">
+                        {% include flag.html code=language.code name=language.name %}
+                        <span class="visually-hidden">{{ language.name }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </aside>
+</section>
 
-{% include widgets/url_debug_message.html %}
-
-{% if site.data.display.homepage.show_experience %}
-{% include widgets/experience_card.html %}
-{% endif %}
-
-{% if site.data.display.homepage.show_news %}
-{% assign count_news = site.news | size %}
-{% if count_news > 0 %}
-{% include widgets/news_card.html %}
-{% endif %}
-{% endif %}
-
-{% if site.data.display.homepage.show_selected_publications %}
-{% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-{% 
-    include widgets/publication_card.html 
-    publications=pubs
-    title='<i class="fas fa-star"></i> Selected Publications'
-%}
-{% endif %}
+<section class="wrap home-papers">
+    <div>
+        {% if site.data.display.homepage.show_selected_publications %}
+        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
+        {% if pubs.size > 0 %}
+        <div id="publications">
+            <div class="block-head">
+                <h2 style="margin-bottom: 8px;">Selected papers</h2>
+            </div>
+            <ol class="work-list">
+                {% for item in pubs %}
+                <li>
+                    <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%Y" }}</time>
+                    <div>
+                        <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                        {% if item.pub %}
+                        <p>{% if item.kind %}<span class="kind-inline">{{ item.kind | capitalize }}</span> · {% endif %}{{ item.pub | strip_html }}{% if item.pub_date %} {{ item.pub_date }}{% endif %}</p>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</section>

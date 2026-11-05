@@ -1,0 +1,94 @@
+---
+layout: default
+---
+{%- assign back_url = "/publications/" -%}
+{%- assign back_label = "Publications" -%}
+{%- if page.collection == "videos" -%}
+  {%- assign back_url = "/videos/" -%}
+  {%- assign back_label = "Videos" -%}
+{%- endif -%}
+{%- assign doi_url = "" -%}
+{%- assign doi_value = "" -%}
+{%- for link in page.links -%}
+  {%- assign href = link[1].url | default: link[1] -%}
+  {%- if doi_url == "" and href contains "doi.org/" -%}
+    {%- assign doi_url = href -%}
+    {%- assign doi_value = href | split: "doi.org/" | last -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if doi_url == "" and page.pub_post contains "doi.org/" -%}
+  {%- assign doi_url = page.pub_post | split: 'href="' | last | split: '"' | first -%}
+  {%- if doi_url contains "doi.org/" -%}
+    {%- assign doi_value = doi_url | split: "doi.org/" | last -%}
+  {%- else -%}
+    {%- assign doi_url = "" -%}
+  {%- endif -%}
+{%- endif -%}
+<header class="page-head">
+    <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ back_url | relative_url }}">{{ back_label }}</a></p>
+    {% if page.kind %}
+    <p class="record-kind"><span class="kind-badge kind-{{ page.kind }}">{{ page.kind | capitalize }}</span></p>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.authors %}
+    <p class="hero-meta entry-authors">{% include widgets/author_list.html authors=page.authors %}</p>
+    {% elsif page.venue or page.date %}
+    <p class="hero-meta">
+        {% if page.venue %}{{ page.venue }}{% endif %}
+        {% if page.venue and page.date %} · {% endif %}
+        {% if page.date %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% endif %}
+    </p>
+    {% endif %}
+</header>
+<section class="section">
+    <div class="wrap content-grid">
+        <article class="prose">
+            {% if page.collection == "videos" %}
+                <h2>Summary</h2>
+                {% assign video_desc = page.description | default: "" | strip %}
+                {% if video_desc != "" %}
+                <div class="video-summary">{{ page.description | markdownify }}</div>
+                {% else %}
+                <p class="empty-desc">-</p>
+                {% endif %}
+            {% elsif page.abstract %}
+                <section class="abstract-block">
+                    <h2>Abstract</h2>
+                    <div class="abstract-body">{{ page.abstract }}</div>
+                </section>
+            {% endif %}
+            {% assign body = content | strip %}
+            {% if body != "" %}
+            <div class="record-body">{{ content }}</div>
+            {% endif %}
+        </article>
+        <aside class="side-card">
+            <h2>{% if page.collection == "videos" %}Video{% else %}Publication{% endif %}</h2>
+            {% if page.kind %}
+            <p><span class="label">Type</span><span class="kind-badge kind-{{ page.kind }}">{{ page.kind | capitalize }}</span></p>
+            {% endif %}
+            {% if page.date %}
+            <p><span class="label">Date</span><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+            {% endif %}
+            {% if page.pub or page.pub_pre or page.pub_date %}
+            <p>
+                <span class="label">Publisher/Venue</span>
+                {{ page.pub_pre }}{% if page.pub %}<em>{{ page.pub }}</em>{% endif %}{% if page.pub_date %} {{ page.pub_date }}{% endif %}
+            </p>
+            {% endif %}
+            {% if doi_url != "" %}
+            <p>
+                <span class="label">DOI</span>
+                <a class="doi-link" href="{{ doi_url }}" target="_blank" rel="noopener noreferrer">{{ doi_value }}</a>
+            </p>
+            {% endif %}
+            {% if page.venue %}
+            <p><span class="label">Where</span>{{ page.venue }}</p>
+            {% endif %}
+            {% if page.selected %}
+            <p>Selected publication.</p>
+            {% endif %}
+            {% include widgets/record_links.html item=page %}
+        </aside>
+    </div>
+</section>

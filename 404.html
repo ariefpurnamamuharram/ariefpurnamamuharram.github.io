@@ -1,7 +1,14 @@
 ---
-layout: prompt
-title: 404 - Page Not Found
+layout: default
+title: Page not found
+permalink: /404.html
+seo_title: "Page not found | Arief Purnama Muharram"
+description: "The requested page could not be found on the website of Arief Purnama Muharram."
+robots: noindex, follow
 ---
-<h1 class="mt-5">404</h1>
-<p class="lead">The requested page could not be found.</p>
-<p><a href="{{ '/' | relative_url }}">Go home</a></p>
+<header class="page-head">
+    <p class="breadcrumb">404</p>
+    <h1>Page not found</h1>
+    <p>That address is not on this site.</p>
+    <a class="button" href="{{ '/' | relative_url }}">Back to home</a>
+</header>

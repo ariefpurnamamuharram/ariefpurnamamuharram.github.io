@@ -1,0 +1,12 @@
+<span class="flag flag-{{ include.code }}" aria-hidden="true" title="{{ include.name }}">
+{%- case include.code -%}
+{%- when "id" -%}
+<svg viewBox="0 0 24 16" focusable="false"><rect width="24" height="8" fill="#ce1126"/><rect y="8" width="24" height="8" fill="#fff"/></svg>
+{%- when "en" -%}
+<svg viewBox="0 0 24 16" focusable="false"><rect width="24" height="16" fill="#012169"/><path stroke="#fff" stroke-width="2.4" d="M0 0l24 16M24 0L0 16"/><path stroke="#c8102e" stroke-width="1.2" d="M0 0l24 16M24 0L0 16"/><path stroke="#fff" stroke-width="4" d="M12 0v16M0 8h24"/><path stroke="#c8102e" stroke-width="2.2" d="M12 0v16M0 8h24"/></svg>
+{%- when "de" -%}
+<svg viewBox="0 0 24 16" focusable="false"><rect width="24" height="5.34" fill="#000"/><rect y="5.34" width="24" height="5.33" fill="#dd0000"/><rect y="10.67" width="24" height="5.33" fill="#ffce00"/></svg>
+{%- else -%}
+<svg viewBox="0 0 24 16" focusable="false"><rect width="24" height="16" fill="#cbd5e1"/></svg>
+{%- endcase -%}
+</span>

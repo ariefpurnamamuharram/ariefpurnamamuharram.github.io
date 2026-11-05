@@ -1,29 +1,24 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
-    <div class="container">
-        <a href="/" class="navbar-brand"><strong>{{site.data.profile.navbar_name}}</strong></a>
-        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-map"></i> Menu
+<header class="site-header">
+    <div class="topbar">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.data.profile.primary_name }}">
+            {% include icon.html name="pulse" %}
+            <span>{{ site.data.profile.navbar_name | default: "A.P.M." }}</span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+            <span class="menu-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                {% for item in site.data.navigation.pages %}
-                {% if item.children %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-{{ forloop.index }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ item.name }}</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-{{ forloop.index }}">
-                        {% for child in item.children %}
-                        <a class="dropdown-item" href="{% if child.url contains 'http' %}{{ child.url }}{% else %}{{ child.url | relative_url }}{% endif %}"{% if child.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ child.name }}</a>
-                        {% endfor %}
-                    </div>
-                </li>
-                {% else %}
-                <li class="nav-item {% if item.name == page.navbar_title %}active{% endif %}">
-                    <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}{% if item.name == "Publications" %} ({{ site.publications.size }}){% endif %}{% if item.name == "Talks" %} ({{ site.talks.size }}){% endif %}</a>
-                </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+            {% for item in site.data.navigation.pages %}
+            {% assign is_current = false %}
+            {% if page.nav == item.key or page.collection == item.key %}
+                {% assign is_current = true %}
+            {% endif %}
+            <a href="{% if item.url contains '://' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"{% if is_current %} aria-current="page"{% endif %}{% if item.url contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.name }}</a>
+            {% endfor %}
+        </nav>
     </div>
-</nav>
+</header>

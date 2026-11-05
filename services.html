@@ -1,0 +1,37 @@
+---
+layout: default
+title: Services
+nav: services
+seo_title: "Services | Arief Purnama Muharram"
+description: "Services from Arief Purnama Muharram."
+redirect_from:
+  - /services.html
+---
+<header class="page-head">
+    <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> Services</p>
+    <h1>Services</h1>
+    <p>{{ site.data.services.intro }}.</p>
+</header>
+
+<section class="section">
+    <div class="wrap">
+        <ul class="service-list">
+            {% for item in site.data.services.items %}
+            <li>
+                <div class="service-head">
+                    <span class="service-mark">{% include icon.html name=item.icon %}</span>
+                    <h2>{{ item.name }}</h2>
+                </div>
+                <p>{{ item.summary }}</p>
+                {% if item.links %}
+                <p class="service-links">
+                    {% for link in item.links %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% include icon.html name="arrow" %}{{ link.label }}</a>
+                    {% endfor %}
+                </p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

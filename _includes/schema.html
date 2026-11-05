@@ -1,0 +1,227 @@
+{%- unless page.robots contains "noindex" -%}
+{%- if page.abstract -%}
+  {%- assign schema_abstract = page.abstract | replace: "<br", " <br" | replace: "</", " </" | strip_html | strip_newlines | strip -%}
+{%- endif -%}
+{%- if page.description -%}
+  {%- assign schema_summary = page.description | replace: "<br", " <br" | replace: "</", " </" | strip_html | strip_newlines | strip -%}
+{%- endif -%}
+{%- assign person = site.data.profile -%}
+{%- assign site_root = "/" | absolute_url -%}
+{%- assign person_id = site_root | append: "#person" -%}
+{%- assign website_id = site_root | append: "#website" -%}
+{%- assign page_url = page.url | absolute_url -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ website_id | jsonify }},
+      "url": {{ site_root | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "inLanguage": "en",
+      "publisher": { "@id": {{ person_id | jsonify }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ person_id | jsonify }},
+      "name": {{ person.primary_name | jsonify }},
+      "url": {{ site_root | jsonify }}
+      {%- if page.url == "/" -%},
+      "jobTitle": ["PhD Student", "Medical Doctor"],
+      "description": {{ site.description | jsonify }},
+      "email": {{ person.email | prepend: "mailto:" | jsonify }},
+      "image": {
+        "@type": "ImageObject",
+        "url": {{ person.portrait_url | absolute_url | jsonify }},
+        "caption": {{ person.portrait_caption | strip | jsonify }}
+      },
+      {%- assign current_school = person.education | where_exp: "item", "item.date contains 'present'" | first -%}
+      {%- if current_school -%}
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": {{ current_school.name | jsonify }}
+      },
+      {%- endif -%}
+      "alumniOf": [
+        {%- assign alumni_comma = "" -%}
+        {%- for school in person.education -%}
+          {%- unless school.date contains "present" -%}
+            {{ alumni_comma }}{
+              "@type": "CollegeOrUniversity",
+              "name": {{ school.name | jsonify }}
+            }
+            {%- assign alumni_comma = "," -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      ],
+      "knowsAbout": [
+        {%- for keyword in person.keywords -%}
+          {{ keyword | jsonify }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ],
+      "sameAs": [
+        {%- capture same_raw -%}
+          {%- if person.orcid -%}https://orcid.org/{{ person.orcid }}|{%- endif -%}
+          {%- if person.gscholar -%}https://scholar.google.com/citations?user={{ person.gscholar }}&hl=en|{%- endif -%}
+          {%- if person.github -%}https://github.com/{{ person.github }}|{%- endif -%}
+          {%- if person.linkedin -%}https://www.linkedin.com/in/{{ person.linkedin }}|{%- endif -%}
+        {%- endcapture -%}
+        {%- assign same_as = same_raw | split: "|" -%}
+        {%- assign same_comma = "" -%}
+        {%- for link in same_as -%}
+          {%- assign clean = link | strip -%}
+          {%- if clean != "" -%}
+            {{ same_comma }}{{ clean | jsonify }}
+            {%- assign same_comma = "," -%}
+          {%- endif -%}
+        {%- endfor -%}
+      ]
+      {%- endif -%}
+    }
+    {%- if page.collection == "publications" -%}
+    ,{
+      "@type": "ScholarlyArticle",
+      "@id": {{ page_url | append: "#article" | jsonify }},
+      "headline": {{ page.title | strip_html | jsonify }},
+      "name": {{ page.title | strip_html | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
+      "inLanguage": "en",
+      "author": [
+        {%- for name in page.authors -%}
+          {%- assign key = name | remove: "*" | remove: "#" -%}
+          {%- assign info = site.data.authors[key] -%}
+          {%- if info.bold -%}
+          { "@id": {{ person_id | jsonify }} }
+          {%- else -%}
+          {
+            "@type": "Person",
+            "name": {{ info.name | default: key | jsonify }}
+            {%- if info.url -%},"url": {{ info.url | jsonify }}{%- endif -%}
+          }
+          {%- endif -%}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+      {%- if page.abstract -%}
+      ,"abstract": {{ schema_abstract | jsonify | replace: "<", "\\u003c" }},
+      "description": {{ schema_abstract | truncatewords: 40 | jsonify | replace: "<", "\\u003c" }}
+      {%- endif -%}
+      {%- assign doi_url = "" -%}
+      {%- for link in page.links -%}
+        {%- assign href = link[1].url | default: link[1] -%}
+        {%- if doi_url == "" and href contains "doi.org" -%}
+          {%- assign doi_url = href -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if doi_url != "" -%},"sameAs": {{ doi_url | jsonify }}{%- endif -%}
+      {%- if page.pub -%}
+      ,"isPartOf": {
+        "@type": "CreativeWork",
+        "name": {{ page.pub | strip_html | jsonify }}
+      }
+      {%- endif -%}
+    },{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ site_root | jsonify }} },
+        { "@type": "ListItem", "position": 2, "name": "Publications", "item": {{ "/publications/" | absolute_url | jsonify }} },
+        { "@type": "ListItem", "position": 3, "name": {{ page.title | strip_html | jsonify }}, "item": {{ page_url | jsonify }} }
+      ]
+    }
+    {%- elsif page.collection == "videos" -%}
+    ,{
+      "@type": "Article",
+      "@id": {{ page_url | append: "#video" | jsonify }},
+      "headline": {{ page.title | strip_html | jsonify }},
+      "name": {{ page.title | strip_html | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
+      "author": { "@id": {{ person_id | jsonify }} }
+      {%- if page.description -%}
+      ,"description": {{ schema_summary | truncatewords: 40 | jsonify | replace: "<", "\\u003c" }}
+      {%- endif -%}
+      {%- if page.venue -%}
+      ,"locationCreated": {
+        "@type": "Place",
+        "name": {{ page.venue | strip_html | jsonify }}
+      }
+      {%- endif -%}
+    },{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ site_root | jsonify }} },
+        { "@type": "ListItem", "position": 2, "name": "Videos", "item": {{ "/videos/" | absolute_url | jsonify }} },
+        { "@type": "ListItem", "position": 3, "name": {{ page.title | strip_html | jsonify }}, "item": {{ page_url | jsonify }} }
+      ]
+    }
+    {%- elsif page.nav == "publications" -%}
+    ,{
+      "@type": "CollectionPage",
+      "@id": {{ page_url | append: "#page" | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "name": "Publications by Arief Purnama Muharram",
+      "isPartOf": { "@id": {{ website_id | jsonify }} },
+      "about": { "@id": {{ person_id | jsonify }} },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ site.publications.size }},
+        "itemListElement": [
+          {%- assign pubs = site.publications | sort: "date" | reverse -%}
+          {%- for item in pubs -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "url": {{ item.url | absolute_url | jsonify }},
+            "name": {{ item.title | strip_html | jsonify }}
+          }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      }
+    }
+    {%- elsif page.nav == "videos" -%}
+    ,{
+      "@type": "CollectionPage",
+      "@id": {{ page_url | append: "#page" | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "name": "Videos by Arief Purnama Muharram",
+      "isPartOf": { "@id": {{ website_id | jsonify }} },
+      "about": { "@id": {{ person_id | jsonify }} }
+    }
+    {%- elsif page.nav == "services" -%}
+    ,{
+      "@type": "WebPage",
+      "@id": {{ page_url | append: "#services" | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "name": "Services by Arief Purnama Muharram",
+      "description": {{ page.description | jsonify }},
+      "isPartOf": { "@id": {{ website_id | jsonify }} },
+      "about": { "@id": {{ person_id | jsonify }} }
+    }
+    {%- elsif page.nav == "about" -%}
+    ,{
+      "@type": "AboutPage",
+      "@id": {{ page_url | append: "#about" | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "name": "About Arief Purnama Muharram",
+      "description": {{ page.description | jsonify }},
+      "isPartOf": { "@id": {{ website_id | jsonify }} },
+      "mainEntity": { "@id": {{ person_id | jsonify }} }
+    }
+    {%- elsif page.url == "/" -%}
+    ,{
+      "@type": "ProfilePage",
+      "@id": {{ page_url | append: "#profile" | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "inLanguage": "en",
+      "isPartOf": { "@id": {{ website_id | jsonify }} },
+      "mainEntity": { "@id": {{ person_id | jsonify }} }
+    }
+    {%- endif -%}
+  ]
+}
+</script>
+{%- endunless -%}

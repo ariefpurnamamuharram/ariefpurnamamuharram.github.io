@@ -1,0 +1,23 @@
+{%- assign item = include.item -%}
+{%- assign cite_id = item.id | slugify -%}
+{%- if item.links or item.bibtex or item.ris -%}
+<p class="entry-links">
+    {%- for link in item.links -%}
+        {%- assign link_icon = link[0] | downcase -%}
+        {%- if link[1].url -%}
+        <a href="{{ link[1].url }}" target="{{ link[1].target | default: '_blank' }}" rel="noopener noreferrer">{% include icon.html name=link_icon %}{{ link[0] }}</a>
+        {%- else -%}
+        <a href="{{ link[1] }}" target="_blank" rel="noopener noreferrer">{% include icon.html name=link_icon %}{{ link[0] }}</a>
+        {%- endif -%}
+    {%- endfor -%}
+    {%- if item.bibtex or item.ris -%}
+    <button type="button" class="cite-open" aria-haspopup="dialog"{% if item.bibtex %} data-bibtex="cite-bib-{{ cite_id }}"{% endif %}{% if item.ris %} data-ris="cite-ris-{{ cite_id }}"{% endif %}>{% include icon.html name="cite" %}Cite</button>
+    {%- endif -%}
+</p>
+{%- if item.bibtex -%}
+<pre id="cite-bib-{{ cite_id }}" hidden>{{ item.bibtex | escape }}</pre>
+{%- endif -%}
+{%- if item.ris -%}
+<pre id="cite-ris-{{ cite_id }}" hidden>{{ item.ris | escape }}</pre>
+{%- endif -%}
+{%- endif -%}

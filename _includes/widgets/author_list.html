@@ -30,14 +30,15 @@
     {%- else -%}
         {%- assign display_name = name | append: mark -%}
     {%- endif -%}
-    
-    {%- if info['url'] -%}
-        <a class="text-body" target="_blank" href="{{ info['url'] }}">{{ display_name }}</a>{%- if forloop.index < authors.size -%}, {% endif -%}
-    {%- else -%}
-        <span class="text-body">
-            {{ display_name }}{%- if forloop.index < authors.size -%}, {% endif -%}
-        </span>
-    {%- endif -%}
+
+    <span class="author">
+        {% include icon.html name="person" %}
+        {%- if info['url'] -%}
+            <a class="author-link" target="_blank" rel="noopener noreferrer" href="{{ info['url'] }}">{{ display_name }}</a>
+        {%- else -%}
+            <span>{{ display_name }}</span>
+        {%- endif -%}
+    </span>{%- unless forloop.last -%}<span class="author-sep">,</span> {% endunless -%}
 
 {%- endfor -%}
 

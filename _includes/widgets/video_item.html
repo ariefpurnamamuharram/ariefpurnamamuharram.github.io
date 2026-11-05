@@ -1,0 +1,11 @@
+{% assign item = include.item %}
+<article class="entry">
+    <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+    {% if item.venue or item.date %}
+    <p class="entry-venue">
+        {% if item.venue %}{{ item.venue }}{% endif %}
+        {% if item.venue and item.date %} · {% endif %}
+        {% if item.date %}<time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%B %Y" }}</time>{% endif %}
+    </p>
+    {% endif %}
+</article>

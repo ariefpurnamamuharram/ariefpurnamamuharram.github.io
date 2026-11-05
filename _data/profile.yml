@@ -1,89 +1,104 @@
 primary_name: "Arief Purnama Muharram"
 secondary_name: ""
 navbar_name: "A.P.M."
+role: "PhD Student · WU Vienna"
 
 positions:
-- logo: /assets/images/badges/wu.png
-  name: PhD Student at Wirtschaftsuniversität Wien
-
+  - logo: /assets/images/badges/wu.png
+    name: PhD Student at Wirtschaftsuniversität Wien
 
 email: "ariefpurnamamharram@gmail.com"
-# cv_link: -
+work_email: "arief.purnama.muharram@wu.ac.at"
 gscholar: xzyGcqIAAAAJ
 github: ariefpurnamamuharram
-# twitter: 
-# wechat_qrcode: 
-# wechat_prompt: >-
-#   -
 linkedin: ariefpurnamamuharram
 orcid: 0000-0003-2918-0458
+
+fiverr: https://www.fiverr.com/ariefpurnamam/
 
 short_bio: >-
   <p>
     I am a medical doctor with advanced experience in medical informatics, integrating a strong foundation in medicine with deep expertise in software engineering, artificial intelligence, machine learning, deep learning, and natural language processing. My academic and research background focuses on bioinformatics and health informatics, with experience in developing computational solutions that bridge medicine and technology. I am passionate about applying data-driven approaches to improve biomedical research, support clinical decision-making, and advance innovations in healthcare.
   </p>
-  <p>
-    <i><b>Keywords:</b> Artificial Intelligence, Machine Learning, Deep Learning, Software Development, Bioinformatics,  Health Informatics</i>
-  </p>
+
+keywords:
+  - Artificial Intelligence
+  - Machine Learning
+  - Deep Learning
+  - Software Development
+  - Bioinformatics
+  - Health Informatics
+
+languages:
+  - name: Indonesian
+    code: id
+  - name: English
+    code: en
+  - name: German
+    code: de
 
 portrait_url: /assets/images/photos/portrait.jpg
 portrait_caption: >-
   Photo in Busan, South Korea (2019)
 
 education:
-- name: Wirtschaftsuniversität Wien
-  logo: /assets/images/badges/wu.png
-  position: Doctor of Philosophy (PhD)
-  date: Oct. 2025 - present
-- name: Institut Teknologi Bandung
-  logo: /assets/images/badges/itb.png
-  position: Master of Science in Informatics (M.Sc.)
-  date: Aug. 2021 - Jul. 2024
-- name: Universitas Indonesia
-  logo: /assets/images/badges/ui.png
-  position: Medical Doctor (MD)
-  date: Aug. 2015 - Jun. 2022
+  - name: Wirtschaftsuniversität Wien
+    logo: /assets/images/badges/wu.png
+    position: Doctor of Philosophy (PhD)
+    date: Oct. 2025 - present
+    url: https://www.wu.ac.at/
+  - name: Institut Teknologi Bandung
+    logo: /assets/images/badges/itb.png
+    position: Master of Science in Informatics (M.Sc.)
+    date: Aug. 2021 - Jul. 2024
+    url: https://www.itb.ac.id/
+  - name: Universitas Indonesia
+    logo: /assets/images/badges/ui.png
+    position: Medical Doctor (MD)
+    date: Aug. 2015 - Jun. 2022
+    url: https://www.ui.ac.id/
 
 training:
-- name: Universitas Indonesia
-  logo: /assets/images/badges/ui.png
-  position: Non-Degree Training Program in Knowledge Graph
-  date: Oct. 2021 - Nov. 2021
-- name: Institut Teknologi Sepuluh Nopember
-  logo: /assets/images/badges/its.png
-  position: Non-Degree Training Program in Artificial Intelligence
-  date: Oct. 2018 - Dec. 2018
+  - name: Universitas Indonesia
+    logo: /assets/images/badges/ui.png
+    position: Non-Degree Training Program in Knowledge Graph
+    date: Oct. 2021 - Nov. 2021
+    url: https://www.ui.ac.id/
+  - name: Institut Teknologi Sepuluh Nopember
+    logo: /assets/images/badges/its.png
+    position: Non-Degree Training Program in Artificial Intelligence
+    date: Oct. 2018 - Dec. 2018
+    url: https://www.its.ac.id/
 
 experience:
-- name: HealthAI.id
-  logo: assets/images/badges/healthai-id.jpeg
-  position: Founder
-  date: Jul. 2024 - present
-- name: PT. Prodia Widyahusada, Tbk.
-  logo: assets/images/badges/prodia.jpeg
-  position: Bioinformatics Scientist
-  date: Oct. 2024 - Sep. 2025
-# - name: Center of Artificial Intelligence, ITB
-#   logo: /assets/images/badges/ai_center_itb.png
-#   position: AI Engineer
-#   date: May. 2024 - Sep. 2024
-- name: PrimaKu
-  logo: /assets/images/badges/primaku.png
-  position: Data Analyst
-  date: Mar. 2022 - Jun. 2022
+  - name: HealthAI.id
+    logo: /assets/images/badges/healthai-id.jpeg
+    position: Founder
+    date: Jul. 2024 - present
+    url: https://healthai.id/
+  - name: PT. Prodia Widyahusada, Tbk.
+    logo: /assets/images/badges/prodia.jpeg
+    position: Bioinformatics Scientist
+    date: Oct. 2024 - Sep. 2025
+    url: https://www.prodia.co.id/
+  - name: PrimaKu
+    logo: /assets/images/badges/primaku.png
+    position: Data Analyst
+    date: Mar. 2022 - Jun. 2022
+    url: https://primaku.com/
 
 awards:
-- name: Ernst Mach Grant - ASEA-UNINET Awardee 2025
-  date: 2025
-- name: Platinum award IndoHCF Award 2023
-  date: 2023
-- name: 1<sup>st</sup> place winner at the 6<sup>th</sup> Open Innovation 2022, IMERI
-  date: 2022
-- name: 3<sup>rd</sup> place at DSE Day Pitching Competition, International Conference on Data and Software Engineering 2021 (ICoDSE 2021), Institut Teknologi Bandung
-  date: 2021
-- name: Top 25 Non-degree artificial intelligence training program, Digital Talent Scholarship 2018, Department of Electrical Engineering, Sepuluh Nopember Institute of Technology (ITS), Ministry of Communication and Informatics, Republic of Indonesia
-  date: 2018
-- name: Universitas Indonesia’s delegation for Pekan Ilmiah Mahasiswa Nasional 30 (PIMNAS 30), Universitas Muslim Indonesia (UMI), Makassar
-  date: 2017
-- name: Grand finalists at the 1<sup>st</sup> Open Innovation 2017, IMERI
-  date: 2017
+  - name: Ernst Mach Grant - ASEA-UNINET Awardee 2025
+    date: 2025
+  - name: Platinum award IndoHCF Award 2023
+    date: 2023
+  - name: 1<sup>st</sup> place winner at the 6<sup>th</sup> Open Innovation 2022, IMERI
+    date: 2022
+  - name: 3<sup>rd</sup> place at DSE Day Pitching Competition, International Conference on Data and Software Engineering 2021 (ICoDSE 2021), Institut Teknologi Bandung
+    date: 2021
+  - name: Top 25 Non-degree artificial intelligence training program, Digital Talent Scholarship 2018, Department of Electrical Engineering, Sepuluh Nopember Institute of Technology (ITS), Ministry of Communication and Informatics, Republic of Indonesia
+    date: 2018
+  - name: Universitas Indonesia’s delegation for Pekan Ilmiah Mahasiswa Nasional 30 (PIMNAS 30), Universitas Muslim Indonesia (UMI), Makassar
+    date: 2017
+  - name: Grand finalists at the 1<sup>st</sup> Open Innovation 2017, IMERI
+    date: 2017

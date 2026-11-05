@@ -1,0 +1,20 @@
+<dialog id="cite-dialog" aria-labelledby="cite-dialog-title">
+    <div class="cite-panel">
+        <div class="cite-head">
+            <h2 id="cite-dialog-title">Export citation</h2>
+            <form method="dialog">
+                <button class="cite-close" type="submit">Close</button>
+            </form>
+        </div>
+        <div class="cite-tabs" role="tablist">
+            <button type="button" id="cite-tab-bibtex" role="tab" aria-controls="cite-out-bibtex" aria-selected="true">BibTeX</button>
+            <button type="button" id="cite-tab-ris" role="tab" aria-controls="cite-out-ris" aria-selected="false">RIS</button>
+        </div>
+        <pre id="cite-out-bibtex" role="tabpanel"></pre>
+        <pre id="cite-out-ris" role="tabpanel" hidden></pre>
+        <div class="cite-actions">
+            <button type="button" id="cite-copy">Copy</button>
+            <p id="cite-status" class="cite-status" role="status"></p>
+        </div>
+    </div>
+</dialog>

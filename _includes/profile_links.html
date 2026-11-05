@@ -1,0 +1,20 @@
+<ul class="profile-links">
+    {% if site.data.profile.email %}
+    <li><a href="mailto:{{ site.data.profile.email | encode_email }}">{% include icon.html name="mail" %}Email</a></li>
+    {% endif %}
+    {% if site.data.profile.work_email %}
+    <li><a href="mailto:{{ site.data.profile.work_email | encode_email }}">{% include icon.html name="briefcase" %}Work</a></li>
+    {% endif %}
+    {% if site.data.profile.gscholar %}
+    <li><a rel="me" href="https://scholar.google.com/citations?user={{ site.data.profile.gscholar }}&amp;hl=en" target="_blank">{% include icon.html name="scholar" %}Google Scholar</a></li>
+    {% endif %}
+    {% if site.data.profile.github %}
+    <li><a rel="me" href="https://github.com/{{ site.data.profile.github }}" target="_blank">{% include icon.html name="github" %}GitHub</a></li>
+    {% endif %}
+    {% if site.data.profile.linkedin %}
+    <li><a rel="me" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}" target="_blank">{% include icon.html name="linkedin" %}LinkedIn</a></li>
+    {% endif %}
+    {% if site.data.profile.orcid %}
+    <li><a rel="me" href="https://orcid.org/{{ site.data.profile.orcid }}" target="_blank">{% include icon.html name="orcid" %}ORCID</a></li>
+    {% endif %}
+</ul>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Binary cardiac pulse mark">
+  <rect width="128" height="128" rx="28" fill="#0A284B"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="7" font-weight="700" text-anchor="middle">
+    <!-- ambient binary field -->
+    <g fill="#163e6f">
+      <text x="10" y="18">0</text><text x="22" y="18">1</text><text x="34" y="18">0</text><text x="46" y="18">1</text><text x="58" y="18">0</text><text x="70" y="18">1</text><text x="82" y="18">0</text><text x="94" y="18">1</text><text x="106" y="18">0</text><text x="118" y="18">1</text>
+      <text x="10" y="30">1</text><text x="22" y="30">0</text><text x="34" y="30">1</text><text x="46" y="30">0</text><text x="58" y="30">1</text><text x="70" y="30">0</text><text x="82" y="30">1</text><text x="94" y="30">0</text><text x="106" y="30">1</text><text x="118" y="30">0</text>
+      <text x="10" y="42">0</text><text x="22" y="42">1</text><text x="34" y="42">0</text><text x="46" y="42">1</text><text x="58" y="42">0</text><text x="70" y="42">1</text><text x="82" y="42">0</text><text x="94" y="42">1</text><text x="106" y="42">0</text><text x="118" y="42">1</text>
+      <text x="10" y="54">1</text><text x="22" y="54">0</text><text x="34" y="54">1</text><text x="46" y="54">0</text><text x="58" y="54">1</text><text x="70" y="54">0</text><text x="82" y="54">1</text><text x="94" y="54">0</text><text x="106" y="54">1</text><text x="118" y="54">0</text>
+      <text x="10" y="66">0</text><text x="22" y="66">1</text><text x="34" y="66">0</text><text x="46" y="66">1</text><text x="58" y="66">0</text><text x="70" y="66">1</text><text x="82" y="66">0</text><text x="94" y="66">1</text><text x="106" y="66">0</text><text x="118" y="66">1</text>
+      <text x="10" y="78">1</text><text x="22" y="78">0</text><text x="34" y="78">1</text><text x="46" y="78">0</text><text x="58" y="78">1</text><text x="70" y="78">0</text><text x="82" y="78">1</text><text x="94" y="78">0</text><text x="106" y="78">1</text><text x="118" y="78">0</text>
+      <text x="10" y="90">0</text><text x="22" y="90">1</text><text x="34" y="90">0</text><text x="46" y="90">1</text><text x="58" y="90">0</text><text x="70" y="90">1</text><text x="82" y="90">0</text><text x="94" y="90">1</text><text x="106" y="90">0</text><text x="118" y="90">1</text>
+      <text x="10" y="102">1</text><text x="22" y="102">0</text><text x="34" y="102">1</text><text x="46" y="102">0</text><text x="58" y="102">1</text><text x="70" y="102">0</text><text x="82" y="102">1</text><text x="94" y="102">0</text><text x="106" y="102">1</text><text x="118" y="102">0</text>
+      <text x="10" y="114">0</text><text x="22" y="114">1</text><text x="34" y="114">0</text><text x="46" y="114">1</text><text x="58" y="114">0</text><text x="70" y="114">1</text><text x="82" y="114">0</text><text x="94" y="114">1</text><text x="106" y="114">0</text><text x="118" y="114">1</text>
+    </g>
+    <!-- cardiac wave picked out in brighter binary -->
+    <g fill="#1F7CEC">
+      <text x="10" y="66">0</text><text x="22" y="66">1</text><text x="34" y="66">0</text>
+      <text x="46" y="54">1</text>
+      <text x="58" y="30">0</text>
+      <text x="70" y="102">1</text>
+      <text x="82" y="42">0</text>
+      <text x="94" y="66">1</text><text x="106" y="66">0</text><text x="118" y="66">1</text>
+    </g>
+    <g fill="#3993FF">
+      <text x="46" y="66">1</text>
+      <text x="58" y="42">0</text>
+      <text x="70" y="90">1</text>
+      <text x="82" y="54">0</text>
+      <text x="94" y="66">1</text>
+    </g>
+  </g>
+  <!-- crisp ECG stroke over the binary field -->
+  <path d="M12 68 H40 L48 68 L58 28 L70 104 L82 44 L90 68 H116"
+        fill="none" stroke="#F8FAFC" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 68 H40 L48 68 L58 28 L70 104 L82 44 L90 68 H116"
+        fill="none" stroke="#1F7CEC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
