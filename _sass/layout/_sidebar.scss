@@ -219,20 +219,17 @@
   }
 }
 
-/* Trailing dots when sidebar meta under the bio overflows the column */
-.author__urls {
-  max-width: 100%;
-
-  li {
-    overflow: hidden;
-    text-overflow: ellipsis;
+/* Trailing dots for desktop sidebar meta only — not the mobile Follow dropdown */
+@include breakpoint($large) {
+  .author__urls {
     max-width: 100%;
-  }
 
-  a {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    .author__desktop {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
   }
 }
 
