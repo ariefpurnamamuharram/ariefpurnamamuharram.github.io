@@ -2,6 +2,7 @@
 title: "Master's Thesis Seminar"
 collection: talks
 type: "Seminar"
+excerpt: "Recording of a thesis research seminar by Arief Purnama Muharram (Student ID: 23521013), a Master's student in Informatics at the School of Electrical Engineering and Informatics, Bandung Institute of Technology. The seminar was held on Monday, May 20, 2024, from 1:00 PM to 2:00 PM WIB. It discusses the application of Natural Language Inference (NLI) and Knowledge Graphs (KG) in validating COVID-19 information in Indonesian language."
 permalink: /talks/20240520/masters-thesis-seminar
 # redirect_from:
 venue: "Institut Teknologi Bandung (ITB)"
