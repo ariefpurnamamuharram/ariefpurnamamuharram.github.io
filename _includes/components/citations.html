@@ -1,0 +1,29 @@
+<!-- Render the citation if supplied -->
+{% if include.citation %}
+Recommended citation: {{ include.citation }}<br />
+{% endif %}
+<!-- Create the variable so it exists in the event there is no citation -->
+{% assign block = "" %}
+{% if include.paperurl %}
+{% capture block %}{{ block }}<a href="{{ include.paperurl }}" target="_blank" rel="noopener noreferrer">Download Paper</a> | {% endcapture %}
+{% endif %}
+{% if include.slidesurl %}
+{% capture block %}{{ block }}<a href="{{ include.slidesurl }}" target="_blank" rel="noopener noreferrer">Download Slides</a> | {% endcapture %}
+{% endif %}
+{% if include.dataseturl %}
+{% capture block %}{{ block }}<a href="{{ include.dataseturl }}" target="_blank" rel="noopener noreferrer">Download Dataset</a> | {% endcapture %}
+{% endif %}
+{% if include.bibtexurl %}
+{% capture block %}{{ block }}<a href="{{ include.bibtexurl }}" target="_blank" rel="noopener noreferrer">Download BibTeX</a> | {% endcapture %}
+{% endif %}
+{% if include.posterurl %}
+{% capture block %}{{ block }}<a href="{{ include.posterurl }}" target="_blank" rel="noopener noreferrer">View Poster</a> | {% endcapture %}
+{% endif %}
+{% if include.codeurl %}
+{% capture block %}{{ block }}<a href="{{ include.codeurl }}" target="_blank" rel="noopener noreferrer">View Code</a> | {% endcapture %}
+{% endif %}
+<!-- If we have a block, display it after removing the pipe -->
+{% if block.size > 0 %}
+{% assign length = block.size | minus: 3 %}
+{{ block | slice: 0, length }}
+{% endif %}

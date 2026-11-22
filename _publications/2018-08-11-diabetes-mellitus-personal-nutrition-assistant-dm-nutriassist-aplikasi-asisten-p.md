@@ -1,0 +1,16 @@
+---
+title: "Diabetes Mellitus Personal Nutrition Assistant (DM NutriAssist) - Aplikasi Asisten Pribadi Berbasis Android untuk Manajemen Nutrisi dan Kontrol Metabolik Pasien Diabetes Melitus Tipe-2"
+collection: publications
+permalink: /publication/20180811/diabetes-mellitus-personal-nutrition-assistant-dm-nutriassist-aplikasi-asisten
+excerpt: "Diabetes Melitus (DM) merupakan sekelompok penyakit gangguan metabolik dengan karakteristik hiperglikemia kronis yang terjadi baik akibat kelainan pada sekresi insulin, kerja insulin, atau keduanya. Dalam penatalaksanaannya, penatalaksanaan DM tipe 2 tidak hanya terfokus pada terapi farmakologis saja, tetapi harus..."
+date: 2018-08-11
+venue: "14th Jakarta Endocrine Meeting 2018"
+paperurl: "https://www.researchgate.net/publication/327976774_Diabetes_Mellitus_Personal_Nutrition_Assistant_DM_NutriAssist_-_Aplikasi_Asisten_Pribadi_Berbasis_Android_untuk_Manajemen_Nutrisi_dan_Kontrol_Metabolik_Pasien_Diabetes_Melitus_Tipe-2"
+citation: "Muharram, Arief Purnama, Hadiyanti, Rachma, Pratama, Rahmadian Tio, Tahapary, Dicky Levenus. (2018). &quot;Diabetes Mellitus Personal Nutrition Assistant (DM NutriAssist) - Aplikasi Asisten Pribadi Berbasis Android untuk Manajemen Nutrisi dan Kontrol Metabolik Pasien Diabetes Melitus Tipe-2.&quot; <i>14th Jakarta Endocrine Meeting 2018</i>."
+category: conference
+selected: false
+---
+
+Diabetes Melitus (DM) merupakan sekelompok penyakit gangguan metabolik dengan karakteristik hiperglikemia kronis yang terjadi baik akibat kelainan pada sekresi insulin, kerja insulin, atau keduanya. Dalam penatalaksanaannya, penatalaksanaan DM tipe 2 tidak hanya terfokus pada terapi farmakologis saja, tetapi harus mencakup 4 pilar utama pengelolaan DM yang meliputi edukasi, diet, aktivitas fisik dan olahraga, dan terapi farmakologis (pengobatan). DM NutriAssist (Diabetes Mellitus Personal Nutrition Assistant) merupakan aplikasi asisten pribadi berbasis Android yang dikembangkan dengan tujuan untuk membantu manajemen nutrisi dan kontrol metabolik pasien DM tipe 2. Aplikasi ini dilengkapi dengan fitur-fitur yang dapat membantu manajemen nutrisi dan kontrol metabolik pada pasien DM tipe 2 yang meliputi, 1) fitur pencatatan dan analisis gula darah, kolesterol, dan tekanan darah; 2) fitur pencatatan dan analisis nutrisi makanan yang dikonsumsi oleh pengguna; 3) fitur pencatat dan penjadwalan kunjungan rutin ke dokter; dan 4) fitur pojok edukasi yang berisi tentang artikel seputar penyakit DM beserta pengelolaannya. Aplikasi ini didesain untuk dapat dijalankan pada smartphone Android dengan versi minimal 7.1 (Nougat), RAM 1 GB, dan kapasitas penyimpanan tersisa minimal 100 MB. Saat ini, aplikasi ini masih dalam tahap evaluasi dan pengembangan lebih lanjut, khususnya dalam hal optimasi fitur dan pengembangan basis data nutrisi makanan. Akan tetapi, diharapkan kedepannya aplikasi ini dapat menjadi solusi praktis untuk membantu manajemen nutrisi dan kontrol metabolik pasien DM, khususnya DM tipe 2, di Indonesia. Kata kunci: Aplikasi Android, diabetes melitus, kontrol metabolik, manajemen nutrisi
+
+**Authors:** Arief Purnama Muharram, Rachma Hadiyanti, Rahmadian Tio Pratama, Dicky Levenus Tahapary

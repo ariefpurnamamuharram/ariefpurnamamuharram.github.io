@@ -1,11 +1,13 @@
-pages:
-- name: Home
-  url: /
-- name: Publications
-  url: /publications
-- name: Talks
-  url: /talks
-- name: Services
-  children:
-  - name: Fiverr
-    url: https://www.fiverr.com/ariefpurnamam/
+# main links
+main:
+  - title: "Publications"
+    url: /publications/
+
+  - title: "Talks"
+    url: /talks/
+
+  - title: "Resources"
+    url: /resources/
+
+  - title: "CV"
+    url: /cv/

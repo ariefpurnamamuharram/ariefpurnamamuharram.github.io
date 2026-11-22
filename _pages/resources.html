@@ -1,0 +1,13 @@
+---
+layout: archive
+title: "Resources"
+permalink: /resources/
+author_profile: true
+redirect_from:
+  - /datasets/
+  - /datasets.html
+---
+
+{% for post in site.resources reversed %}
+  {% include archive-single.html %}
+{% endfor %}
