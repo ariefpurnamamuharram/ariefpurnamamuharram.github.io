@@ -147,6 +147,28 @@
   }
 }
 
+/* CV collection lists: match markdown list density (education / experience) */
+.cv-list {
+  .list__item {
+    padding-right: 0;
+
+    .archive__item-title {
+      margin-top: 0;
+      margin-bottom: 0.25em;
+    }
+
+    .archive__item-excerpt,
+    .page__meta {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
 
 /*
    Grid view
