@@ -13,7 +13,7 @@ title                    : "Arief Purnama Muharram"
 title_separator          : "-"
 name                     : &name "Arief Purnama Muharram"
 description              : &description "PhD student at WU Vienna."
-url                      : https://ariefpurnamamuharram.github.io
+url                      : https://muharram.at
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ariefpurnamamuharram/ariefpurnamamuharram.github.io"
 
